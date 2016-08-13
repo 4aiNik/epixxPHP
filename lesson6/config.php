@@ -20,13 +20,6 @@ function connection() {
 	return $connection;
 }
 
-
-// $mysqli = new PDO ('mysql:host=localhost;dbname=epixx', 'root', '', [
-// 		PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-// 		PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-// 		PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
-// 	]);
-
 $salt = 'qscgyj,lp';
 
 function template($name, array $vars = []) {
@@ -41,13 +34,11 @@ function template($name, array $vars = []) {
 	require($name);
 	$contents = ob_get_contents();
 
-	//var_dump($contents);exit;
 	ob_end_clean();
 	return $contents;
 }
 
 function makeToken() {
-//	session_start();
 	$salt = "wtf";
 	$id = session_id();
 	$token = md5($salt . $id);

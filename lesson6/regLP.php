@@ -16,7 +16,7 @@ if (!empty($_POST['loginReg']) && !empty($_POST['passReg'])) {
 		$result -> execute (['login' => $login, 'pass' => $pass]);
 		session_start();
 		$_SESSION['user_id'] = md5($_POST['loginReg'].$salt);
-		header("Location: read.php");
+		header("Location: index.php?c=post&a=read");
 	}
 }
 else {

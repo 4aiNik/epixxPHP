@@ -10,7 +10,7 @@ if (!empty($_POST['loginInput']) && !empty($_POST['passInput'])) {
 	if ($check -> rowCount() == 1) {
 		session_start();
 		$_SESSION['user_id'] = md5($_POST['loginInput'].$salt);
-		header("Location: read.php");
+		header("Location: index.php?c=post&a=read");
 	} 
 		echo "нет такого сочетания логин/пароль";
 		echo "<br><br>";

@@ -55,6 +55,7 @@ function postAddSave() {
 	} else {
 		errorPage(__FUNCTION__ . "token");
 	}
+	header("Location: index.php?c=post&a=read");
 }
 
 function errorPage ($msg) {
@@ -76,6 +77,7 @@ function postRead() {
 function postEdit() {
 	echo template ("template.php", [
 		'body' => template("postEdit.php", [
+			'list' => getPost($_GET['id']),
 			'_aft' => makeToken()
 		])
 	]);
@@ -83,7 +85,7 @@ function postEdit() {
 
 function postEditSave() {
 	if (checkToken()) {
-		if (editPost($_POST['text'], $_POST['data'])) {
+		if (editPost($_POST['id'], $_POST['text'])) {
 			index();
 		} else {
 			errorPage(__FUNCTION__);
@@ -91,6 +93,7 @@ function postEditSave() {
 	} else {
 		errorPage(__FUNCTION__ . "token");
 	}	
+	header("Location: index.php?c=post&a=read");
 }
 
 function postDel() {

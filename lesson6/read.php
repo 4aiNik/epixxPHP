@@ -9,3 +9,5 @@ foreach ($list as $post) {
 echo "</ul>";
 
 echo "<a href='index.php?c=post&a=add'>добавить запись</a>";
+echo "<br>";
+echo "<a href='indexLP.html'>выход</a>";
