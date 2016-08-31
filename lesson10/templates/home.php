@@ -3,6 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Epic Blog</title>
+    <style>
+        #pages{
+            list-style:none;
+        }
+
+        #pages li{
+            float:left;
+            margin:auto 10px;
+        }
+
+        #pages a{
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
     <h1>
@@ -26,6 +40,21 @@
             </li>
         <?php endforeach; ?>
     </ul>
+    
+    <ul id="pages">
+        <?php if($page > 1):?>
+            <li><a href="index.php?action=home&method=index&page=<?=$page-1;?>"><</a></li>
+        <?php endif;?>
+
+    <?php for ($i=1; $i<=$total; $i++) :?>
+        <li><a href="index.php?action=home&method=index&page=<?=$i;?>"><?=$i;?></a></li>
+    <?php endfor;?> 
+
+        <?php if($page < $total) :?>            
+            <li><a href="index.php?action=home&method=index&page=<?=$page+1;?>">></a></li>
+        <?php endif;?>
+    </ul>
+
     <a href="index.php?action=messages&method=add">Добавить сообщение</a>
      <a href="index.php?action=account&method=logout">Выход</a>
 </body>

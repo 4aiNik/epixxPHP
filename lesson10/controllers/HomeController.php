@@ -6,7 +6,12 @@ class HomeController extends BaseController {
 		$this->LoadModel('Messages');
 		$model = new MessagesModel();
 		
-		$data['messages'] = $model->getAllMessages();
+		$page = isset($_GET['page']) ? $_GET['page'] : 1;
+		$page = (int) $page;
+
+		$data['page'] = $page;
+		$data['total'] = $model->getMessagesCount();
+		$data['messages'] = $model->getAllMessages($page);
 		$this->LoadPage('home',$data);
 	}
 }

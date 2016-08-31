@@ -12,10 +12,10 @@ class BaseController {
 		$filename = 'templates/' . $name . '.php';
 		$content = '';
 		if (file_exists($filename)) {
-			ob_start();
+			ob_start(); //старт буферизации, чтобы файл сразу не выводился на стр
 			extract($data);
 			require $filename;
-			$content = ob_get_contents();
+			$content = ob_get_contents(); //данные из буфера записываем в content
 			ob_end_clean();
 		}
 		return $content;

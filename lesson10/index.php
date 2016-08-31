@@ -35,5 +35,6 @@ if (file_exists($action_file)) {
     $controller = new $action();
     $controller->$method();
 } else {
-    echo template('templates/error.php');
+	$error = new BaseController();
+    echo $error->LoadPage('error');
 }
